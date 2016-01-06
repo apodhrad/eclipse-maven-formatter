@@ -1,0 +1,52 @@
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apodhrad.utils</groupId>
+  <artifactId>eclipse-maven-formatter</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>eclipse-maven-formatter</name>
+  <packaging>pom</packaging>
+
+  <properties>
+    <tychoVersion>0.22.0</tychoVersion>
+    <tychoExtrasVersion>${tychoVersion}</tychoExtrasVersion>
+    <src>${project.basedir}</src>
+  </properties>
+	
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho.extras</groupId>
+        <artifactId>tycho-eclipserun-plugin</artifactId>
+        <version>${tychoExtrasVersion}</version>
+        <executions>
+	  <execution>
+	    <id>java-code-formatter</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>eclipse-run</goal>
+            </goals>
+	    <configuration>
+              <appArgLine>-application org.eclipse.jdt.core.JavaCodeFormatter -verbose -config org.eclipse.jdt.core.prefs ${src}</appArgLine>
+              <dependencies>
+		<dependency>
+		  <artifactId>org.eclipse.jdt.core</artifactId>
+		  <type>eclipse-plugin</type>
+		</dependency>
+              </dependencies>
+	      <repositories>
+		<repository>
+		  <id>eclipse-mars</id>
+		  <layout>p2</layout>
+		  <url>http://download.eclipse.org/releases/mars</url>
+		</repository>
+	      </repositories>
+	    </configuration>
+	  </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
