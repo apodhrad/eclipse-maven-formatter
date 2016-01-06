@@ -11,6 +11,7 @@
   <properties>
     <tychoVersion>0.22.0</tychoVersion>
     <tychoExtrasVersion>${tychoVersion}</tychoExtrasVersion>
+    <profile>jbosstools</profile>
     <src>${project.basedir}</src>
   </properties>
 	
@@ -28,7 +29,7 @@
               <goal>eclipse-run</goal>
             </goals>
 	    <configuration>
-              <appArgLine>-application org.eclipse.jdt.core.JavaCodeFormatter -verbose -config org.eclipse.jdt.core.prefs ${src}</appArgLine>
+              <appArgLine>-application org.eclipse.jdt.core.JavaCodeFormatter -verbose -config ${profile}-org.eclipse.jdt.core.prefs ${src}</appArgLine>
               <dependencies>
 		<dependency>
 		  <artifactId>org.eclipse.jdt.core</artifactId>
